@@ -165,7 +165,7 @@ void Gpu::read()
         }
         // get GPU information through i2c by busID.
         auto success = getGPUInfobyBusID(configs[i].busID, configs[i].address, configs[i].channel, &Value); 
-        puData.sensorValue = (u_int64_t)Value;
+        gpuData.sensorValue = (u_int64_t)Value;
 
         // can not find. create dbus
         if (iter == gpus.end())
