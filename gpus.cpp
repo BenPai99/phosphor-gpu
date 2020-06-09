@@ -40,7 +40,7 @@ void GpuTEMP::checkSensorThreshold()
         CriticalInterface::criticalAlarmLow(true);
     else
         CriticalInterface::criticalAlarmLow(false);
-}	
+}
 
 void GpuTEMP::setSensorThreshold(uint64_t criticalHigh, uint64_t criticalLow,
                                  uint64_t maxValue, uint64_t minValue,
