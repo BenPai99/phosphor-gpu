@@ -59,6 +59,10 @@ void GpuTEMP::setSensorValueToDbus(const u_int64_t value)
 {
     ValueIface::value(value);
 }
+void GpuSTATUS::setGpuStatusValueToDbus(const u_int64_t value)
+{
+    ValueIface::value(value);
+}
 
 } // namespace gpu
 } // namespace phosphor

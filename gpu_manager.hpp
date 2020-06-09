@@ -50,7 +50,8 @@ class Gpu
     std::string getValue(std::string);
     std::unordered_map<std::string, std::shared_ptr<phosphor::gpu::GpuTEMP>>
         gpus;
-
+    std::unordered_map<std::string, std::shared_ptr<phosphor::gpu::GpuSTATUS>>
+        gpustatus;
 
   private:
     sdbusplus::bus::bus &bus;

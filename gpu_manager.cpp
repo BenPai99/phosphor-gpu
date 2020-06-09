@@ -140,15 +140,29 @@ void Gpu::init()
 
 void Gpu::read()
 {
+    int s = 0;
 
     for (int i = 0; i < configs.size(); i++)
     {
         GPUData gpuData;
         int Value = 0;
         auto iter = gpus.find(std::to_string(configs[i].index));
+        auto service_iter = gpustatus.find(std::to_string(s));
         
         //std::cerr << "GPU index = "<< i << std::endl;
+        if(service_iter == gpustatus.end())
+        {
+             std::string objPaths = GPU_OBJ_PATH_SERVICE;
 
+             auto gpuSTATUS = std::make_shared<phosphor::gpu::GpuSTATUS>(
+                 bus, objPaths.c_str());
+             gpustatus.emplace(std::to_string(s), gpuSTATUS);
+             gpuSTATUS->setGpuStatusValueToDbus(1);
+        }
+        else
+        {
+            service_iter->second->setGpuStatusValueToDbus(1);
+        }
         // get GPU information through i2c by busID.
         auto success = getGPUInfobyBusID(configs[i].busID, configs[i].address, configs[i].channel, &Value); 
         puData.sensorValue = (u_int64_t)Value;
