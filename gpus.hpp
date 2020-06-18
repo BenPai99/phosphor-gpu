@@ -27,8 +27,10 @@ using WarningInterface =
 using GpuIfaces =
     sdbusplus::server::object::object<ValueIface, CriticalInterface, WarningInterface>;
 
+using ItemIface = sdbusplus::xyz::openbmc_project::Inventory::server::Item;
+
 using GpuStatusIfaces =
-    sdbusplus::server::object::object<ValueIface>;
+    sdbusplus::server::object::object<ItemIface>;
 
 class GpuTEMP : public GpuIfaces
 {
@@ -70,7 +72,7 @@ class GpuSTATUS : public GpuStatusIfaces
     {
     }
 
-    void setGpuStatusValueToDbus(const u_int64_t value);
+    void setGpuStatusToDbus(const bool value);
 
   private:
     sdbusplus::bus::bus &bus;

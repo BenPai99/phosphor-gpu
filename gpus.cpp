@@ -59,9 +59,9 @@ void GpuTEMP::setSensorValueToDbus(const u_int64_t value)
 {
     ValueIface::value(value);
 }
-void GpuSTATUS::setGpuStatusValueToDbus(const u_int64_t value)
+void GpuSTATUS::setGpuStatusToDbus(const bool value)
 {
-    ValueIface::value(value);
+    ItemIface::present(value);
 }
 
 } // namespace gpu

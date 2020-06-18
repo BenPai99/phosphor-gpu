@@ -157,11 +157,11 @@ void Gpu::read()
              auto gpuSTATUS = std::make_shared<phosphor::gpu::GpuSTATUS>(
                  bus, objPaths.c_str());
              gpustatus.emplace(std::to_string(s), gpuSTATUS);
-             gpuSTATUS->setGpuStatusValueToDbus(1);
+             gpuSTATUS->setGpuStatusToDbus(true);
         }
         else
         {
-            service_iter->second->setGpuStatusValueToDbus(1);
+            service_iter->second->setGpuStatusToDbus(true);
         }
         // get GPU information through i2c by busID.
         auto success = getGPUInfobyBusID(configs[i].busID, configs[i].address, configs[i].channel, &Value); 
